@@ -48,23 +48,23 @@ describe("Interpreter", function () {
     describe('Interpreter Facts', function () {
 
         it('varon(juan) should be true', function () {
-            assert(interpreter.checkFact('varon(juan)'));
+            assert(interpreter.checkQuery('varon(juan)'));
         });
 
         it('varon(maria) should be false', function () {
-            assert(interpreter.checkFact('varon(maria)') === false);
+            assert(interpreter.checkQuery('varon(maria)') === false);
         });
 
         it('mujer(cecilia) should be true', function () {
-            assert(interpreter.checkFact('mujer(cecilia)'));
+            assert(interpreter.checkQuery('mujer(cecilia)'));
         });
 
         it('padre(juan, pepe) should be true', function () {
-            assert(interpreter.checkFact('padre(juan, pepe)') === true);
+            assert(interpreter.checkQuery('padre(juan, pepe)') === true);
         });
 
         it('padre(mario, pepe) should be false', function () {
-            assert(interpreter.checkFact('padre(mario, pepe)') === false);
+            assert(interpreter.checkQuery('padre(mario, pepe)') === false);
         });
 
         // TODO: Add more tests
@@ -74,13 +74,13 @@ describe("Interpreter", function () {
     describe('Interpreter Rules', function () {
 
         it('hijo(pepe, juan) should be true', function () {
-            assert(interpreter.checkRule('hijo(pepe, juan)') === true);
+            assert(interpreter.checkQuery('hijo(pepe, juan)') === true);
         });
         it('hija(maria, roberto) should be false', function () {
-            assert(interpreter.checkRule('hija(maria, roberto)' === false));
+            assert(interpreter.checkQuery('hija(maria, roberto)' === false));
         });
         it('hijo(pepe, juan) should be true', function () {
-            assert(interpreter.checkRule('hijo(pepe, juan)'));
+            assert(interpreter.checkQuery('hijo(pepe, juan)'));
         });
 
         // TODO: Add more tests

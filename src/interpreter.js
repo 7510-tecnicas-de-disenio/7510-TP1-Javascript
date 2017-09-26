@@ -4,13 +4,10 @@ var Interpreter = function () {
 
     }
 
-    this.checkFact = function (params) {
+    this.checkQuery = function (params) {
         return true;
     }
 
-    this.checkRule = function (params) {
-        return true;
-    }
 }
 
 module.exports = Interpreter;
