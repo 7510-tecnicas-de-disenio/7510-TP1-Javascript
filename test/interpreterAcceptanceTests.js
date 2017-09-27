@@ -77,7 +77,7 @@ describe("Interpreter", function () {
             assert(interpreter.checkQuery('hijo(pepe, juan)') === true);
         });
         it('hija(maria, roberto) should be false', function () {
-            assert(interpreter.checkQuery('hija(maria, roberto)' === false));
+            assert(interpreter.checkQuery('hija(maria, roberto)') === false);
         });
         it('hijo(pepe, juan) should be true', function () {
             assert(interpreter.checkQuery('hijo(pepe, juan)'));
