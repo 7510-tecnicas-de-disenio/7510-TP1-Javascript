@@ -1,4 +1,5 @@
 var fs = require('fs');
+var Fact = require('../src/fact');
 
 var DBLoader = function DBLoader() {
     this.facts = [];
@@ -12,7 +13,7 @@ var DBLoader = function DBLoader() {
                 if (element.includes(":-")) {
                     self.rules.push(element.replace(/.$/, ''));
                 } else {
-                    self.facts.push(element.replace(/.$/, ''));
+                    self.facts.push(new Fact(element.replace(/.$/, '')));
                 }
             }
         });

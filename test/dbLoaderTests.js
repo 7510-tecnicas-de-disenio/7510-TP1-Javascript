@@ -1,4 +1,5 @@
 var assert = require('assert');
+var expect = require("chai").expect;
 
 var DBLoader = require('../src/dbLoader');
 
@@ -26,7 +27,8 @@ describe("DBLoader", function () {
 
     describe("Load DB from file", function () {
         it("first element should be a fact", function () {
-            assert(dBLoader.facts[0] === "varon(juan)");
+            expect(dBLoader.facts[0].name).to.eql("varon");
+            expect(dBLoader.facts[0].statements).to.eql(["juan"]);
         });
 
         it("last element should be a rule", function () {

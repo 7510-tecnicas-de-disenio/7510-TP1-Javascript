@@ -19,6 +19,7 @@ describe("Fact", function () {
 
     afterEach(function () {
         // runs after each test in this block
+        fact = null;
     });
 
     describe("Create fact from string", function () {
