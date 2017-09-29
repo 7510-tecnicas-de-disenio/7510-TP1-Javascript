@@ -39,5 +39,10 @@ describe("Fact", function () {
             assert(fact.statements[1] === "pepe");
             assert(fact.statements[2] === "mario");
         });
+
+        it("should create a fact with name", function () {
+            fact = new Fact("varon(juan)");
+            assert(fact.name === "varon");
+        });
     });
 });
