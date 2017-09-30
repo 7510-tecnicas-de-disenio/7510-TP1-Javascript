@@ -22,7 +22,7 @@ describe("Fact", function () {
         fact = null;
     });
 
-    describe("Create fact from string", function () {
+    describe("Create from string", function () {
         it("should create a fact with one argument", function () {
             fact = new Fact("varon(juan)");
             assert(fact.statements[0] === "juan");
