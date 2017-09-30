@@ -16,13 +16,16 @@ const Interpreter = function () {
 
     this.checkQuery = function (params) {
         if (params.slice(-1) !== ")") return false;
-        let fact = new Fact(params);
+        let queryFact = new Fact(params);
         if (this.facts.some(x => {
-                return _.isEqual(x, fact);
+                return _.isEqual(x, queryFact);
             })) {
             return true;
+        } else if (this.rules.some(x => {
+                x.evaluate(queryFact);
+            })) {
         } else {
-            let rule = new Rule(params);
+            return false;
         }
     };
 

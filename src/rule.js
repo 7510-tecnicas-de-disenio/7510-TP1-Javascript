@@ -8,8 +8,8 @@ const Rule = function Rule(string) {
     });
 };
 
-Rule.prototype.evaluate = function () {
-
+Rule.prototype.evaluate = (fact) => {
+    return false;
 };
 
 module.exports = Rule;
