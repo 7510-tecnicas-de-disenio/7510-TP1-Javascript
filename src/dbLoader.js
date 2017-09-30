@@ -1,23 +1,27 @@
-var fs = require('fs');
-var Fact = require('../src/fact');
+const fs = require('fs');
+const Fact = require('../src/fact');
 
-var DBLoader = function DBLoader() {
+const DBLoader = function DBLoader() {
     this.facts = [];
     this.rules = [];
-    var self = this;
-    this.load = function (filePath) {
-        var rawDB = fs.readFileSync(filePath, "utf-8");
-        rawDB = rawDB.split("\n")
-        rawDB.forEach(function (element) {
-            if (element !== "") {
-                if (element.includes(":-")) {
-                    self.rules.push(element.replace(/.$/, ''));
-                } else {
-                    self.facts.push(new Fact(element.replace(/.$/, '')));
-                }
+};
+
+DBLoader.prototype.load = function (filePath) {
+    let rawDB = fs.readFileSync(filePath, "utf-8");
+    this.loadFromString(rawDB);
+};
+
+DBLoader.prototype.loadFromString = function (rawDB) {
+    rawDB = rawDB.split("\n");
+    rawDB.forEach((element) => {
+        if (element !== "") {
+            if (element.includes(":-")) {
+                this.rules.push(element.replace(/.$/, ''));
+            } else {
+                this.facts.push(new Fact(element.replace(/.$/, '')));
             }
-        });
-    }
+        }
+    });
 };
 
 module.exports = DBLoader;

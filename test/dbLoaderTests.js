@@ -1,11 +1,11 @@
-var assert = require('assert');
-var expect = require("chai").expect;
+const assert = require('assert');
+const expect = require("chai").expect;
 
-var DBLoader = require('../src/dbLoader');
+const DBLoader = require('../src/dbLoader');
 
 describe("DBLoader", function () {
 
-    var dBLoader = null;
+    let dBLoader = null;
 
     before(function () {
         // runs before all tests in this block

@@ -1,4 +1,4 @@
-var Interpreter = function () {
+const Interpreter = function () {
 
     this.parseDB = function (params, paramss, paramsss) {
 

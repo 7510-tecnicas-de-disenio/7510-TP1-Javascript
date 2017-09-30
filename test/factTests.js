@@ -1,9 +1,9 @@
-var assert = require('assert');
+const assert = require('assert');
 
-var Fact = require('../src/fact');
+const Fact = require('../src/fact');
 
 describe("Fact", function () {
-    var fact = null;
+    let fact = null;
 
     before(function () {
         // runs before all tests in this block

@@ -1,4 +1,4 @@
-var Rule = function Rule(string) {
+const Rule = function Rule(string) {
     this.variables = null;
     this.unreplacedFacts = null
 };
