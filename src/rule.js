@@ -1,5 +1,6 @@
 const Rule = function Rule(string) {
-    this.variables = null;
+    this.name = string.replace(/\(.*$/, '');
+    this.variables = string.replace(/^.*\(/, '').replace(/\).*/, '').split(', ');
     this.unreplacedFacts = null
 };
 
