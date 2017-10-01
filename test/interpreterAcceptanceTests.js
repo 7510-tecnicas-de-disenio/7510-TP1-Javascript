@@ -1,13 +1,13 @@
-var expect = require("chai").expect;
-var should = require('should');
-var assert = require('assert');
+const expect = require("chai").expect;
+const should = require('should');
+const assert = require('assert');
 
-var Interpreter = require('../src/interpreter');
+const Interpreter = require('../src/interpreter');
 
 
 describe("Interpreter", function () {
 
-    var db = [
+    const db = [
         "varon(juan).",
         "varon(pepe).",
         "varon(hector).",
@@ -24,7 +24,7 @@ describe("Interpreter", function () {
         "hija(X, Y) :- mujer(X), padre(Y, X)."
     ];
 
-    var interpreter = null;
+    let interpreter = null;
 
     before(function () {
         // runs before all tests in this block
@@ -76,9 +76,11 @@ describe("Interpreter", function () {
         it('hijo(pepe, juan) should be true', function () {
             assert(interpreter.checkQuery('hijo(pepe, juan)') === true);
         });
+
         it('hija(maria, roberto) should be false', function () {
             assert(interpreter.checkQuery('hija(maria, roberto)') === false);
         });
+
         it('hijo(pepe, juan) should be true', function () {
             assert(interpreter.checkQuery('hijo(pepe, juan)'));
         });
