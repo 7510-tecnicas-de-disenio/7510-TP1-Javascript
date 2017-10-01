@@ -18,7 +18,7 @@ DBLoader.prototype.loadFromString = function (rawDB) {
 };
 
 DBLoader.prototype.loadFromArray = function (arr) {
-    arr.forEach((element) => {
+    arr.forEach(element => {
         if (element !== "") {
             if (element.includes(":-")) {
                 this.rules.push(new Rule(element.replace(/.$/, '')));
