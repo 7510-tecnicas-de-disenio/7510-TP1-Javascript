@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Fact = require('../src/fact');
+const Rule = require('../src/rule');
 
 const DBLoader = function DBLoader() {
     this.facts = [];
@@ -17,10 +18,10 @@ DBLoader.prototype.loadFromString = function (rawDB) {
 };
 
 DBLoader.prototype.loadFromArray = function (arr) {
-    arr.forEach((element) => {
+    arr.forEach(element => {
         if (element !== "") {
             if (element.includes(":-")) {
-                this.rules.push(element.replace(/.$/, ''));
+                this.rules.push(new Rule(element.replace(/.$/, '')));
             } else {
                 this.facts.push(new Fact(element.replace(/.$/, '')));
             }

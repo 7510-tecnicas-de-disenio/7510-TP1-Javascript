@@ -16,14 +16,21 @@ const Interpreter = function () {
 
     this.checkQuery = function (params) {
         if (params.slice(-1) !== ")") return false;
-        let fact = new Fact(params);
-        if (this.facts.some(x => {
-                return _.isEqual(x, fact);
-            })) {
+        let query = new Fact(params);
+        if (this.anyFactMatches(query)) {
             return true;
         } else {
-            let rule = new Rule(params);
+            let matchingNameRule = this.rules.filter(rule => rule.nameMatches(query))[0];
+            if (!matchingNameRule) {return false;}
+            let replacedFacts = matchingNameRule.getReplacedFacts(query);
+            return replacedFacts.every(this.anyFactMatches, this);
         }
+    };
+
+    this.anyFactMatches = function (query) {
+        return this.facts.some(x => {
+            return _.isEqual(x, query);
+        })
     };
 
 };

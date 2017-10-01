@@ -66,7 +66,8 @@ describe("DBLoader", function () {
 
         it("last element should be a rule", function () {
             dBLoader.loadFromFile("./resources/db_test.txt");
-            assert(dBLoader.rules.pop() === "hija(X, Y) :- mujer(X), padre(Y, X)");
+            expect(dBLoader.rules[1].name).to.eql("hija");
+            expect(dBLoader.rules[1].variables).to.have.lengthOf(2);
         });
     });
 
@@ -79,7 +80,8 @@ describe("DBLoader", function () {
 
         it("last element should be a rule", function () {
             dBLoader.loadFromString(db);
-            assert(dBLoader.rules.pop() === "hija(X, Y) :- mujer(X), padre(Y, X)");
+            expect(dBLoader.rules[1].name).to.eql("hija");
+            expect(dBLoader.rules[1].variables).to.have.lengthOf(2);
         });
     });
 
@@ -92,7 +94,8 @@ describe("DBLoader", function () {
 
         it("last element should be a rule", function () {
             dBLoader.loadFromArray(dbArr);
-            assert(dBLoader.rules.pop() === "hija(X, Y) :- mujer(X), padre(Y, X)");
+            expect(dBLoader.rules[1].name).to.eql("hija");
+            expect(dBLoader.rules[1].variables).to.have.lengthOf(2);
         });
     });
 
