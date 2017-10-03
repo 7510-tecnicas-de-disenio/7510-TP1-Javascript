@@ -11,6 +11,22 @@ var Parser = function () {
     var ruleVariablesRegex = /^.*\((.*)\)\:-.*$/;
 
     var ruleObjectivesRegex = /^.*\(.*\)\:-(.*)\.$/;
+    
+    var removeAllSpaces = function(clause) {
+        return clause.replace(/\ /g, "");
+    }
+
+    this.isRule = function(clause) {
+        return ruleRegex.test(clause);
+    }
+    
+    this.isFact = function(clause) {
+        return factRegex.test(clause);
+    }
+    
+    this.validQuery = function(query) {
+        return queryRegex.test(query);
+    }
 
 }
 
