@@ -65,6 +65,47 @@ var Parser = function () {
         var objectiveString = ruleObjectivesRegex.exec(rule)[objectivesIndex];
         return replaceObjectiveSeparator(objectiveString).split(specialObjectiveSeparator);
     }
+    
+    this.parseQuery = function(query) {
+    	var cleanQuery = removeAllSpaces(query);
+    	if (this.validQuery(cleanQuery)) {
+    	    return {
+    	        predicate: this.obtainClausePredicate(cleanQuery),
+    	        parameters: this.obtainQueryParameters(cleanQuery)
+    	    };
+    	}
+    	
+    	throw new Error('Invalid query: ' + query);
+    }
+    
+    this.parseFact = function(fact) {
+    	return {
+    	    predicate: this.obtainClausePredicate(fact),
+    	    parameters: this.obtainFactParameters(fact)
+    	};
+    }
+    
+    this.parseRule = function(rule) {
+        return {
+            predicate: this.obtainClausePredicate(rule),
+    	    variables: this.obtainRuleVariables(rule),
+    	    objectives: this.obtainRuleObjectives(rule)
+    	};
+    }
+
+    this.parseClause = function(clause) {
+        var cleanClause = removeAllSpaces(clause);
+        
+        if (this.isRule(cleanClause)) {
+            return this.parseRule(cleanClause);
+        }
+        
+        if (this.isFact(cleanClause)) {
+            return this.parseFact(cleanClause);
+        }
+        
+        throw new Error('Invalid entry in database: ' + clause);
+    }
 
 }
 
